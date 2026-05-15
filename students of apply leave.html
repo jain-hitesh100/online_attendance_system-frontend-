@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Apply Leave</title>
+  <style>
+    body {
+      background-color: #eceeef;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .leave-form {
+      background: white;
+      padding: 30px 40px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      width: 400px;
+    }
+
+    .leave-form h2 {
+      text-align: center;
+      margin-bottom: 25px;
+      color: #2c3e50;
+    }
+
+    label {
+      font-weight: bold;
+      display: block;
+      margin: 12px 0 6px;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .button-group {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+    }
+
+    button {
+      width: 48%;
+      padding: 10px;
+      border: none;
+      border-radius: 6px;
+      font-weight: bold;
+      color: white;
+      cursor: pointer;
+    }
+
+    .apply-btn {
+      background-color: #2ecc71;
+    }
+
+    .apply-btn:hover {
+      background-color: #27ae60;
+    }
+
+    .cancel-btn {
+      background-color: #e74c3c;
+    }
+
+    .cancel-btn:hover {
+      background-color: #c0392b;
+    }
+  </style>
+</head>
+<body>
+
+  <form class="leave-form" id="leaveForm">
+    <h2>📝 Apply Leave</h2>
+
+    <label for="studentName">Name of Student</label>
+    <input type="text" id="studentName" placeholder="Enter full name">
+
+    <label for="leaveFrom">Leave From</label>
+    <input type="date" id="leaveFrom">
+
+    <label for="leaveTo">Leave To</label>
+    <input type="date" id="leaveTo">
+
+    <label for="leaveReason">Leave Reason</label>
+    <textarea id="leaveReason" rows="3" placeholder="Enter reason"></textarea>
+
+    <div class="button-group">
+      <button type="submit" class="apply-btn">Apply Leave</button>
+      <button type="reset" class="cancel-btn">Cancel</button>
+    </div>
+  </form>
+
+  <script>
+    document.getElementById("leaveForm").addEventListener("submit", function(e) {
+      e.preventDefault(); // Stop normal form submit
+
+      const name = document.getElementById("studentName").value.trim();
+      const from = document.getElementById("leaveFrom").value;
+      const to = document.getElementById("leaveTo").value;
+      const reason = document.getElementById("leaveReason").value.trim();
+
+      if (!name || !from || !to || !reason) {
+        alert("⚠️ Please fill in all fields.");
+        return;
+      }
+
+      if (from > to) {
+        alert("❌ 'Leave From' date cannot be after 'Leave To'.");
+        return;
+      }
+
+      alert(`✅ Leave Applied Successfully for ${name}\nFrom: ${from} To: ${to}\nReason: ${reason}`);
+    });
+  </script>
+
+</body>
+</html>

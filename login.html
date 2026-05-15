@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Online Attendance System - Login</title>
+
+  <script>
+    const student = { name: "Hitesh", pass: "9306" };
+    const teacher = { name: "sakshi", pass: "1234" };
+
+    function studentLogin() {
+      let inputName = document.getElementById("student-id").value;
+      let inputPass = document.getElementById("student-password").value;
+
+      if (inputName === student.name && inputPass === student.pass) {
+        localStorage.setItem("username", inputName); // Store student username
+        alert("Login successful!");
+        window.location.href = "student_dashboard.html";
+      } else {
+        alert("Invalid student credentials. Please try again.");
+      }
+      return false;
+    }
+
+    function teacherLogin() {
+      let inputName = document.getElementById("teacher-id").value;
+      let inputPass = document.getElementById("teacher-password").value;
+
+      if (inputName === teacher.name && inputPass === teacher.pass) {
+        localStorage.setItem("username", inputName); // Store teacher username
+        alert("Login successful!");
+        window.location.href = "teacher_dashboard.html";
+      } else {
+        alert("Invalid teacher credentials. Please try again.");
+      }
+      return false;
+    }
+  </script>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #10188d, #E6E6FA);
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .logo-container {
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .logo-container img {
+      width: 120px;
+      height: auto;
+      border-radius: 50%;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    .login-container {
+      display: flex;
+      gap: 30px;
+      background-color: rgba(255, 255, 255, 0.15);
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+      backdrop-filter: blur(10px);
+    }
+
+    .login-box {
+      background: white;
+      padding: 30px 25px;
+      border-radius: 10px;
+      width: 250px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .login-box h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .login-box label {
+      font-weight: bold;
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .login-box input[type="text"],
+    .login-box input[type="password"] {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      transition: 0.3s ease;
+    }
+
+    .login-box input:focus {
+      border-color: #4A90E2;
+      outline: none;
+    }
+
+    .login-box input[type="submit"] {
+      width: 100%;
+      background-color: #4A90E2;
+      color: white;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background-color 0.3s;
+    }
+
+    .login-box input[type="submit"]:hover {
+      background-color: #357ABD;
+    }
+
+    .button-group, .signUp-link {
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    @media (max-width: 600px) {
+      .login-container {
+        flex-direction: column;
+        gap: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Online Attendance System</h1>
+
+  <div class="logo-container">
+    <img src="https://img.favpng.com/15/17/7/bengal-tiger-logo-clip-art-png-favpng-tHDX8F06pwkbraSrhSt62Fnxa.jpg" alt="Bengal tiger logo">
+  </div>
+
+  <div class="login-container">
+    <!-- Student Login -->
+    <div class="login-box">
+      <h2>Student Login</h2>
+      <form onsubmit="return studentLogin()">
+        <label for="student-id">Student ID</label>
+        <input type="text" id="student-id" placeholder="Enter your ID" required>
+
+        <label for="student-password">Password</label>
+        <input type="password" id="student-password" placeholder="Enter password" required>
+
+        <input type="submit" value="Student Login">
+        <input type="reset" value="Reset">
+      </form>
+    </div>
+
+    <!-- Teacher Login -->
+    <div class="login-box">
+      <h2>Teacher Login</h2>
+      <form onsubmit="return teacherLogin()">
+        <label for="teacher-id">Teacher ID</label>
+        <input type="text" id="teacher-id" placeholder="Enter your ID" required>
+
+        <label for="teacher-password">Password</label>
+        <input type="password" id="teacher-password" placeholder="Enter password" required>
+
+        <input type="submit" value="Teacher Login">
+        <input type="reset" value="Reset">
+      </form>
+    </div>
+  </div>
+
+  <div class="signUp-link">
+    <p>Don't have an account?
+      <a href="sign up.html" class="signUp-link">Sign up</a>
+    </p>
+  </div>
+</body>
+</html>

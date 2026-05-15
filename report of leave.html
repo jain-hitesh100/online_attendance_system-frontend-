@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Report with Calendar</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f2f5;
+      padding: 40px;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+    }
+
+    .report-container {
+      display: flex;
+      gap: 30px;
+    }
+
+    .calendar-box {
+      width: 250px;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    .calendar-box label {
+      font-weight: bold;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .calendar-box input {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+    }
+
+    .report-table {
+      flex: 1;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+
+    th, td {
+      padding: 10px;
+      border: 1px solid #ccc;
+    }
+
+    th {
+      background-color: #34495e;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>📋 Attendance Report with Date</h2>
+
+  <div class="report-container">
+    <div class="calendar-box">
+      <label>Select Date</label>
+      <input type="date" id="filterDate">
+    </div>
+
+    <div class="report-table">
+      <table>
+        <thead>
+          <tr>
+            <th>Student</th>
+            <th>Roll No</th>
+            <th>Class</th>
+            <th>Date</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody id="reportBody">
+          <tr>
+            <td>Ravi Sharma</td>
+            <td>01</td>
+            <td>10A</td>
+            <td>2025-06-01</td>
+            <td>Present</td>
+          </tr>
+          <tr>
+            <td>Priya Mehra</td>
+            <td>02</td>
+            <td>10A</td>
+            <td>2025-06-02</td>
+            <td>Absent</td>
+          </tr>
+          <tr>
+            <td>Amit Verma</td>
+            <td>03</td>
+            <td>10A</td>
+            <td>2025-06-01</td>
+            <td>Present</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script>
+    const filterDate = document.getElementById("filterDate");
+    const allRows = Array.from(document.querySelectorAll("#reportBody tr"));
+
+    filterDate.addEventListener("change", () => {
+      const selected = filterDate.value;
+      allRows.forEach(row => {
+        const date = row.cells[3].innerText;
+        row.style.display = date === selected || selected === "" ? "" : "none";
+      });
+    });
+  </script>
+
+</body>
+</html>

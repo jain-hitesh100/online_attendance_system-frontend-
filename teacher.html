@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Teacher - Leave Approval</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f2f5;
+      padding: 30px;
+    }
+
+    h2 {
+      color: #2c3e50;
+      margin-bottom: 20px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      overflow: hidden;
+    }
+
+    th, td {
+      padding: 12px 15px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+
+    th {
+      background-color: #34495e;
+      color: white;
+    }
+
+    tr:hover {
+      background-color: #f9f9f9;
+    }
+
+    .btn {
+      padding: 6px 12px;
+      margin-right: 5px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      color: white;
+      font-weight: bold;
+    }
+
+    .approve-btn {
+      background-color: #2ecc71;
+    }
+
+    .reject-btn {
+      background-color: #e74c3c;
+    }
+
+    .status {
+      font-weight: bold;
+      padding: 6px 12px;
+      border-radius: 6px;
+      display: inline-block;
+    }
+
+    .approved {
+      background-color: #d1f2eb;
+      color: #27ae60;
+    }
+
+    .rejected {
+      background-color: #f9c0c0;
+      color: #c0392b;
+    }
+
+    .pending {
+      background-color: #fef3c7;
+      color: #d35400;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>👩‍🏫 Leave Approval Panel</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Student Name</th>
+        <th>Leave From</th>
+        <th>Leave To</th>
+        <th>Reason</th>
+        <th>Status</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Ravi Sharma</td>
+        <td>2025-06-10</td>
+        <td>2025-06-12</td>
+        <td>Medical Leave</td>
+        <td><span class="status pending">Pending</span></td>
+        <td>
+          <button class="btn approve-btn" onclick="updateStatus(this, 'approved')">Approve</button>
+          <button class="btn reject-btn" onclick="updateStatus(this, 'rejected')">Reject</button>
+        </td>
+      </tr>
+      <tr>
+        <td>Priya Mehra</td>
+        <td>2025-06-15</td>
+        <td>2025-06-17</td>
+        <td>Family Function</td>
+        <td><span class="status pending">Pending</span></td>
+        <td>
+          <button class="btn approve-btn" onclick="updateStatus(this, 'approved')">Approve</button>
+          <button class="btn reject-btn" onclick="updateStatus(this, 'rejected')">Reject</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <script>
+    function updateStatus(button, action) {
+      const statusSpan = button.closest('tr').querySelector('.status');
+
+      if (action === 'approved') {
+        statusSpan.textContent = 'Approved';
+        statusSpan.className = 'status approved';
+      } else if (action === 'rejected') {
+        statusSpan.textContent = 'Rejected';
+        statusSpan.className = 'status rejected';
+      }
+
+     
+      const rowButtons = button.closest('td').querySelectorAll('button');
+      rowButtons.forEach(btn => btn.disabled = true);
+    }
+  </script>
+
+</body>
+</html>
